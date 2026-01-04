@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "author": "Luiz Carlos",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -70.2, "left": 108.4, "attrs": {} },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -95.4, "left": -173.4, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -26.4,
+      "left": 289.8,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -92, "left": 175.02, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -128.2,
+      "left": 297.6,
+      "attrs": { "color": "red", "xray": "1" }
+    }
+  ],
+  "connections": [
+    [ "uno:5V", "bb1:bp.1", "red", [ "v19.1", "h146.2" ] ],
+    [ "uno:GND.2", "bb1:bn.1", "black", [ "v0" ] ],
+    [ "pir1:VCC", "bb1:bp.7", "red", [ "v0" ] ],
+    [ "pir1:GND", "bb1:bp.10", "black", [ "v0" ] ],
+    [ "pir1:OUT", "uno:8", "gold", [ "v28.8", "h-96.14", "v-153.6", "h-124.8" ] ],
+    [ "bz1:1", "bb1:bn.16", "black", [ "v0" ] ],
+    [ "bz1:2", "uno:9", "blue", [ "v38.4", "h124.4", "v-240", "h-460.8" ] ],
+    [ "bb1:tp.25", "bb1:bp.25", "red", [ "v0" ] ],
+    [ "bb1:tn.24", "bb1:bn.24", "black", [ "v0" ] ],
+    [ "btn1:1.l", "bb1:tn.13", "black", [ "h0" ] ],
+    [ "btn1:2.r", "uno:10", "violet", [ "h19.4", "v-57.4", "h-403.2" ] ],
+    [ "bz1:1", "bb1:20b.g", "", [ "$bb" ] ],
+    [ "bz1:2", "bb1:21b.g", "", [ "$bb" ] ],
+    [ "pir1:VCC", "bb1:9t.c", "", [ "$bb" ] ],
+    [ "pir1:OUT", "bb1:10t.c", "", [ "$bb" ] ],
+    [ "pir1:GND", "bb1:11t.c", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}

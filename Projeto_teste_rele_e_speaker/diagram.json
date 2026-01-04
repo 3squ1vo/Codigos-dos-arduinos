@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": 16.2, "left": 156.4, "attrs": {} },
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": -153, "left": -262.8, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -236, "left": 232.62, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -112.8,
+      "left": 606.6,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 102, "left": 359, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "mega:5V", "bb1:bp.1", "red", [ "v0" ] ],
+    [ "mega:GND.2", "bb1:bn.1", "black", [ "v0" ] ],
+    [ "bb1:bp.25", "bb1:bp.26", "red", [ "v0" ] ],
+    [ "bb1:bn.25", "bb1:bn.26", "black", [ "v0" ] ],
+    [ "pir1:OUT", "mega:1", "cyan", [ "v9.6", "h-76.94", "v-57.6", "h-220.8" ] ],
+    [ "pir1:VCC", "bb1:bp.2", "red", [ "v153.6", "h-76.8", "v172.8", "h19.2" ] ],
+    [ "pir1:GND", "bb1:bn.2", "black", [ "v163.2", "h-86.66", "v153.6", "h19.2", "v39.7" ] ],
+    [ "bz1:1", "bb1:bn.40", "black", [ "v211.2", "h19.2", "v28.8" ] ],
+    [ "bz1:2", "mega:8", "orange", [ "v9.6", "h-432.4", "v-249.6", "h-297.6", "v115.2" ] ],
+    [ "led1:C", "bb1:bn.16", "black", [ "v0" ] ],
+    [ "led1:A", "bb1:22b.g", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:21b.g", "", [ "$bb" ] ],
+    [ "led1:A", "mega:6", "violet", [ "v48", "h-211.2", "v-403.2", "h-235.6" ] ]
+  ],
+  "dependencies": {}
+}
