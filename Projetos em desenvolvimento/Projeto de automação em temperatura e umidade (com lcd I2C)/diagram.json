@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "author": "Luiz Carlos",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -243, "left": -16.4, "attrs": {} },
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": -469.8, "left": -166.8, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -140.05,
+      "left": 105.6,
+      "attrs": { "value": "4700" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -396.8,
+      "left": 264.8,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -231.7, "left": 191.8, "attrs": {} },
+    { "type": "board-ds18b20", "id": "temp1", "top": -212.33, "left": 128.88, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -573.6,
+      "left": -36.6,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "temp1:VCC", "r1:2", "red", [ "v9.6", "h9.6" ] ],
+    [ "temp1:DQ", "r1:1", "violet", [ "v9.6", "h-38.4" ] ],
+    [ "temp1:GND", "bb1:bn.9", "black", [ "v0", "h-28.8" ] ],
+    [ "r1:2", "bb1:bp.15", "red", [ "v0" ] ],
+    [ "bb1:tn.24", "bb1:bn.24", "black", [ "v0" ] ],
+    [ "bb1:tp.25", "bb1:bp.25", "red", [ "v0" ] ],
+    [ "r1:1", "mega:53", "violet", [ "v0", "h-19.2", "v-115.2", "h134.4", "v-48" ] ],
+    [ "mega:5V", "bb1:tp.1", "red", [ "v0" ] ],
+    [ "mega:GND.2", "bb1:tn.1", "black", [ "v0" ] ],
+    [ "lcd1:SDA", "mega:20", "blue", [ "h-48", "v-124.6", "h-59.6" ] ],
+    [ "lcd1:SCL", "mega:21", "green", [ "h-38.4", "v-143.7", "h-59.7" ] ],
+    [ "lcd1:GND", "bb1:tn.15", "black", [ "h-19.2", "v96", "h-57.6" ] ],
+    [ "lcd1:VCC", "bb1:tp.14", "red", [ "h-28.8", "v76.9", "h-76.8" ] ],
+    [ "pot1:GND", "bb1:bn.19", "black", [ "v0" ] ],
+    [ "pot1:VCC", "bb1:bp.21", "red", [ "v0" ] ],
+    [ "pot1:SIG", "mega:A0", "green", [ "v57.6", "h-154", "v-144", "h-38.4" ] ],
+    [ "bz1:1", "mega:GND.1", "black", [ "v9.6", "h-38.4" ] ],
+    [ "bz1:2", "mega:9", "gray", [ "v19.2", "h-10" ] ],
+    [ "pot1:GND", "bb1:23t.d", "", [ "$bb" ] ],
+    [ "pot1:SIG", "bb1:24t.d", "", [ "$bb" ] ],
+    [ "pot1:VCC", "bb1:25t.d", "", [ "$bb" ] ],
+    [ "temp1:GND", "bb1:14t.d", "", [ "$bb" ] ],
+    [ "temp1:DQ", "bb1:15t.d", "", [ "$bb" ] ],
+    [ "temp1:VCC", "bb1:16t.d", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}

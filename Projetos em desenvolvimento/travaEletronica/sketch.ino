@@ -1,0 +1,101 @@
+#include <Keypad.h>
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(10, 11, 12, 13, 14, 15); 
+
+const byte rows = 4;
+const byte columns = 3;
+
+const int ledGreen = 5;
+const int ledRed = 4;
+const int relay = 32;
+
+const String password = "1234";
+String wordDigitalUser = ""; // sla, eu fumei nesse nome, mas se refere a entrada do user
+
+char keys[rows][columns] = {
+  {'1', '2', '3'},
+  {'4', '5', '6'},
+  {'7', '8', '9'},
+  {'*', '0', '#'}
+};
+
+byte pinosRows[rows] = {22, 23, 24, 25};
+byte pinosColumns[columns] = {26, 27, 28};
+Keypad teclado = Keypad(makeKeymap(keys), pinosRows, pinosColumns, rows, columns);
+
+void setup() {
+  pinMode(ledGreen, OUTPUT);
+  pinMode(ledRed, OUTPUT);
+  pinMode(relay, OUTPUT);
+
+  digitalWrite(relay, LOW);
+
+  lcd.begin(16,2);
+  lcd.print("Digite a senha: ");
+}
+
+void loop() {
+  char key = teclado.getKey();
+
+ if (key) {
+  Serial.println(key);
+
+    if (key == '*') {
+      wordDigitalUser = "";
+      lcd.clear();
+      lcd.print("Digite a senha: ");
+    } else if (key == '#') {
+        if (wordDigitalUser.length() == 4) {
+          checkPassword();
+        } else {
+            lcd.clear();
+            lcd.print("Senha incompleta");
+
+            for (int i = 0; i < 4; i++){
+              digitalWrite(ledRed, HIGH);
+              digitalWrite(ledGreen, HIGH);
+              digitalWrite(relay, HIGH);
+              delay(200);
+
+              digitalWrite(ledGreen, LOW);
+              digitalWrite(ledRed, LOW);
+              digitalWrite(relay, LOW);
+              delay(200);
+            }
+
+            delay(2000);
+            lcd.clear();
+            lcd.print("Digite a senha: ");
+            wordDigitalUser = "";
+          }
+      } else {
+          lcd.setCursor(0, 1);
+          wordDigitalUser += key;
+          lcd.setCursor(wordDigitalUser.length() - 1, 1);
+          lcd.print("*");
+        }
+  }
+}
+
+void checkPassword () {
+  if (wordDigitalUser == password) {
+    lcd.clear();
+    lcd.print("Acesso Liberado");
+    digitalWrite(ledGreen, HIGH);
+    digitalWrite(ledRed, LOW);
+    digitalWrite(relay, HIGH);
+    delay(3000);
+    digitalWrite(ledGreen, LOW);
+    digitalWrite(relay, LOW);
+  } else {
+    lcd.clear();
+    lcd.print("Senha incorreta");
+    digitalWrite(ledRed, HIGH);
+    digitalWrite(ledGreen, LOW);
+    digitalWrite(relay, HIGH);
+    delay(3000);
+    digitalWrite(ledRed, LOW);
+    digitalWrite(relay, LOW);
+  }
+}
