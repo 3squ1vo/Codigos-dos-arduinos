@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Luiz Carlos",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": 141, "left": 2.8, "attrs": {} },
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": -57, "left": -157.2, "attrs": {} },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 274.6,
+      "left": 106.6,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": 51.43, "left": 304, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 183.9, "left": -32.9, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 254.4,
+      "left": 450.65,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "mega:5V", "bb1:tp.1", "red", [ "v0" ] ],
+    [ "mega:GND.2", "bb1:tn.1", "black", [ "v0" ] ],
+    [ "lcd1:VSS", "bb1:tn.20", "black", [ "v28.8", "h-86.4" ] ],
+    [ "lcd1:VDD", "bb1:tp.19", "red", [ "v48", "h-95.1" ] ],
+    [ "lcd1:RS", "mega:12", "cyan", [ "v38.4", "h-124.5", "v-288", "h-259.2" ] ],
+    [ "lcd1:RW", "bb1:tn.17", "black", [ "v57.6", "h-143.3" ] ],
+    [ "lcd1:E", "mega:11", "blue", [ "v67.2", "h-115.2", "v-326.4", "h-278" ] ],
+    [ "lcd1:D4", "mega:5", "gray", [ "v57.6", "h182.4", "v-326.4", "h-562.1" ] ],
+    [ "lcd1:D5", "mega:4", "orange", [ "v67.2", "h182.5", "v-345.6", "h-556.8" ] ],
+    [ "lcd1:D6", "mega:3", "purple", [ "v76.8", "h182.6", "v-364.8", "h-556.8" ] ],
+    [ "lcd1:D7", "mega:2", "green", [ "v86.4", "h182.7", "v-384", "h-556.8" ] ],
+    [ "ultrasonic1:VCC", "bb1:2b.h", "", [ "$bb" ] ],
+    [ "ultrasonic1:TRIG", "bb1:3b.h", "", [ "$bb" ] ],
+    [ "ultrasonic1:ECHO", "bb1:4b.h", "", [ "$bb" ] ],
+    [ "ultrasonic1:GND", "bb1:5b.h", "", [ "$bb" ] ],
+    [ "ultrasonic1:VCC", "bb1:tp.10", "red", [ "v9.6", "h105.6" ] ],
+    [ "ultrasonic1:GND", "bb1:tn.11", "black", [ "v19.2", "h75.6" ] ],
+    [ "ultrasonic1:TRIG", "mega:9", "yellow", [ "v28.8", "h604.4", "v-432", "h-642.5" ] ],
+    [ "ultrasonic1:ECHO", "mega:8", "limegreen", [ "v38.4", "h604", "v-451.2", "h-643.2" ] ],
+    [ "servo1:GND", "bb1:tn.15", "black", [ "v0" ] ],
+    [ "servo1:V+", "bb1:tp.14", "red", [ "v0" ] ],
+    [ "servo1:PWM", "mega:7", "#8f4814", [ "v-9.6", "h57.4", "v86.4", "h432", "v-480", "h-624" ] ],
+    [ "r1:1", "bb1:48t.e", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:48b.i", "", [ "$bb" ] ],
+    [ "lcd1:A", "r1:1", "green", [ "h-0.1", "v48" ] ],
+    [ "r1:2", "bb1:tp.21", "red", [ "h0" ] ],
+    [ "lcd1:K", "bb1:tn.22", "black", [ "v38.4", "h9.6", "v76.8", "h-192" ] ]
+  ],
+  "dependencies": {}
+}

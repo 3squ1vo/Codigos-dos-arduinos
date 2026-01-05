@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "author": "Luiz Carlos",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": 141, "left": -74, "attrs": {} },
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": -66.6, "left": -205.2, "attrs": {} },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 148,
+      "left": 471.5,
+      "attrs": { "common": "cathode" }
+    },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": 128.23, "left": 16, "attrs": {} },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -616.4,
+      "left": 293.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 292.8,
+      "left": 153.05,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -2, "left": 412.8, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 213.6,
+      "left": 405,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "mega:5V", "bb1:tp.1", "red", [ "v0" ] ],
+    [ "mega:GND.2", "bb1:tn.1", "black", [ "v0" ] ],
+    [ "bz1:1", "bb1:51b.j", "", [ "$bb" ] ],
+    [ "bz1:2", "bb1:52b.j", "", [ "$bb" ] ],
+    [ "bb1:tp.50", "bb1:bp.50", "red", [ "v0" ] ],
+    [ "bb1:tn.49", "bb1:bn.49", "black", [ "v0" ] ],
+    [ "r1:1", "bb1:25b.g", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:bp.20", "", [ "$bb" ] ],
+    [ "lcd1:VSS", "bb1:11b.f", "", [ "$bb" ] ],
+    [ "lcd1:VDD", "bb1:12b.f", "", [ "$bb" ] ],
+    [ "lcd1:V0", "bb1:13b.f", "", [ "$bb" ] ],
+    [ "lcd1:RS", "bb1:14b.f", "", [ "$bb" ] ],
+    [ "lcd1:RW", "bb1:15b.f", "", [ "$bb" ] ],
+    [ "lcd1:E", "bb1:16b.f", "", [ "$bb" ] ],
+    [ "lcd1:D0", "bb1:17b.f", "", [ "$bb" ] ],
+    [ "lcd1:D1", "bb1:18b.f", "", [ "$bb" ] ],
+    [ "lcd1:D2", "bb1:19b.f", "", [ "$bb" ] ],
+    [ "lcd1:D3", "bb1:20b.f", "", [ "$bb" ] ],
+    [ "lcd1:D4", "bb1:21b.f", "", [ "$bb" ] ],
+    [ "lcd1:D5", "bb1:22b.f", "", [ "$bb" ] ],
+    [ "lcd1:D6", "bb1:23b.f", "", [ "$bb" ] ],
+    [ "lcd1:D7", "bb1:24b.f", "", [ "$bb" ] ],
+    [ "lcd1:A", "bb1:25b.f", "", [ "$bb" ] ],
+    [ "lcd1:K", "bb1:26b.f", "", [ "$bb" ] ],
+    [ "lcd1:A", "r1:1", "red", [ "v0" ] ],
+    [ "lcd1:V0", "r1:1", "gold", [ "v0" ] ],
+    [ "lcd1:VSS", "bb1:bn.8", "black", [ "v0" ] ],
+    [ "lcd1:VDD", "bb1:bp.9", "red", [ "v0" ] ],
+    [ "bz1:1", "bb1:bn.41", "black", [ "v0" ] ],
+    [ "rgb1:COM", "bb1:bn.46", "black", [ "v0" ] ],
+    [ "lcd1:K", "bb1:bn.20", "black", [ "v0" ] ],
+    [
+      "lcd1:RS",
+      "mega:13",
+      "limegreen",
+      [ "v19.2", "h249.9", "v-153.6", "h-144", "v-201.6", "h-259.2" ]
+    ],
+    [ "lcd1:RW", "bb1:bn.11", "black", [ "v0" ] ],
+    [ "lcd1:E", "mega:12", "blue", [ "v28.8", "h240", "v-172.8", "h-144", "v-201.6", "h-240" ] ],
+    [ "lcd1:D5", "mega:4", "gray", [ "v48", "h201.7", "v-211.2", "h-144", "v-201.6", "h-182.4" ] ],
+    [ "lcd1:D4", "mega:5", "violet", [ "v38.4", "h201.6", "v-192", "h-144", "v-201.6", "h-192" ] ],
+    [
+      "lcd1:D6",
+      "mega:3",
+      "purple",
+      [ "v57.6", "h201.8", "v-230.4", "h-144", "v-201.6", "h-192" ]
+    ],
+    [
+      "lcd1:D7",
+      "mega:2",
+      "magenta",
+      [ "v67.2", "h201.9", "v-249.6", "h-144", "v-201.6", "h-192" ]
+    ],
+    [ "servo1:PWM", "mega:6", "yellow", [ "h-172.8", "v-201.4", "h-245.2" ] ],
+    [ "servo1:GND", "bb1:tn.38", "black", [ "h0" ] ],
+    [ "servo1:V+", "bb1:tp.39", "red", [ "h-9.6", "v0.1" ] ],
+    [
+      "bz1:2",
+      "mega:7",
+      "limegreen",
+      [ "v9.6", "h-58", "v-249.6", "h-134.4", "v-201.6", "h-38.4" ]
+    ],
+    [
+      "rgb1:R",
+      "mega:8",
+      "red",
+      [ "v9.6", "h-28.8", "v-172.8", "h-67.2", "v19.2", "h-124.8", "v-201.6", "h-288" ]
+    ],
+    [
+      "rgb1:G",
+      "mega:9",
+      "limegreen",
+      [ "v19.2", "h-37.1", "v-192", "h-86.4", "v19.2", "h-105.6", "v-201.6", "h-307.2" ]
+    ],
+    [ "rgb1:R", "bb1:56t.a", "", [ "$bb" ] ],
+    [ "rgb1:COM", "bb1:57t.b", "", [ "$bb" ] ],
+    [ "rgb1:G", "bb1:58t.a", "", [ "$bb" ] ],
+    [ "rgb1:B", "bb1:59t.a", "", [ "$bb" ] ],
+    [
+      "rgb1:B",
+      "mega:10",
+      "cyan",
+      [ "v28.8", "h-36.8", "v-211.2", "h-105.6", "v19.2", "h-86.4", "v-201.6", "h-316.8" ]
+    ],
+    [ "keypad1:R1", "mega:14", "green", [ "v9.6", "h-328.3" ] ],
+    [ "keypad1:R2", "mega:15", "green", [ "v19.2", "h-326.8" ] ],
+    [ "keypad1:R3", "mega:16", "green", [ "v28.8", "h-326.7" ] ],
+    [ "keypad1:R4", "mega:17", "green", [ "v38.4", "h-336.2" ] ],
+    [ "keypad1:C1", "mega:18", "green", [ "v48", "h-326.5" ] ],
+    [ "keypad1:C2", "mega:19", "green", [ "v57.6", "h-326.4" ] ],
+    [ "keypad1:C3", "mega:20", "green", [ "v67.2", "h-336.15" ] ]
+  ],
+  "dependencies": {}
+}
